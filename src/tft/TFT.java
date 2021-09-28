@@ -19,7 +19,7 @@ public class TFT {
     public static void main(String[] args) {
         Client client = new Client();
         client.setVisible(true);
-        client.setSize(300, 220);
+        client.setSize(400, 350);
         client.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
     }
     
