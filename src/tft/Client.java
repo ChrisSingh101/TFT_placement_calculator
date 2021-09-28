@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,34 +15,26 @@ import javax.swing.JTextField;
 
 public class Client extends JFrame{
     
-    JLabel game1 = new JLabel("Enter game 1 placement");
-        JLabel game2 = new JLabel("Enter game 2 placement");
-        JLabel game3 = new JLabel("Enter game 3 placement");
-        JLabel game4 = new JLabel("Enter game 4 placement");
-        JLabel game5 = new JLabel("Enter game 5 placement");
-        JTextField placement1 = new JTextField (10);
-        JTextField placement2 = new JTextField (10);
-        JTextField placement3 = new JTextField (10);
-        JTextField placement4 = new JTextField (10);
-        JTextField placement5 = new JTextField (10);
-        JTextField result = new JTextField (10);
-        
-       
-    
-    public Client(){
         JLabel game1 = new JLabel("Enter game 1 placement");
         JLabel game2 = new JLabel("Enter game 2 placement");
         JLabel game3 = new JLabel("Enter game 3 placement");
         JLabel game4 = new JLabel("Enter game 4 placement");
         JLabel game5 = new JLabel("Enter game 5 placement");
-        JLabel resultLabel = new JLabel("Average placement:");
         JTextField placement1 = new JTextField (10);
         JTextField placement2 = new JTextField (10);
         JTextField placement3 = new JTextField (10);
         JTextField placement4 = new JTextField (10);
         JTextField placement5 = new JTextField (10);
         JTextField result = new JTextField (10);
+        JLabel resultLabel = new JLabel("Average placement:");
+        JButton exit = new JButton("Exit");
+        JButton reset = new JButton("Reset");
+        JLabel explanation = new JLabel("Press enter after each placement to update the result");
         
+       
+    
+    public Client(){
+             
                
         
         JPanel flow1Panel = new JPanel (new FlowLayout (FlowLayout.CENTER));
@@ -50,7 +43,9 @@ public class Client extends JFrame{
         JPanel flow4Panel = new JPanel (new FlowLayout (FlowLayout.CENTER));
         JPanel flow5Panel = new JPanel (new FlowLayout (FlowLayout.CENTER));
         JPanel flow6Panel = new JPanel (new FlowLayout (FlowLayout.CENTER));
-        JPanel gridPanel  = new JPanel (new GridLayout (6, 0));
+        JPanel flow7Panel = new JPanel (new FlowLayout (FlowLayout.CENTER));
+        JPanel flow8Panel = new JPanel (new FlowLayout (FlowLayout.CENTER));
+        JPanel gridPanel  = new JPanel (new GridLayout (8, 0));
         
         flow1Panel.add(game1);
         flow1Panel.add(placement1);
@@ -64,13 +59,20 @@ public class Client extends JFrame{
         flow5Panel.add(placement5);
         flow6Panel.add(resultLabel);
         flow6Panel.add(result);
+        flow7Panel.add(exit);
+        flow7Panel.add(reset);
+        flow8Panel.add(explanation);
         
+        gridPanel.add (flow8Panel);
         gridPanel.add (flow1Panel);
         gridPanel.add (flow2Panel);
         gridPanel.add (flow3Panel);
         gridPanel.add (flow4Panel);
         gridPanel.add (flow5Panel);
         gridPanel.add (flow6Panel);
+        gridPanel.add (flow7Panel);
+        
+        
 
         add (gridPanel, BorderLayout.NORTH);
         
@@ -206,8 +208,26 @@ public class Client extends JFrame{
                 
             }
         });
+         
+         exit.addActionListener((ActionEvent ae) -> {
+            System.exit(0);
+        });
         
-        
+        reset.addActionListener((ActionEvent ae) -> {
+            placement1.setText("");
+            placement2.setText("");
+            placement3.setText("");
+            placement4.setText("");
+            placement5.setText("");
+            result.setText("");
+            flow1Panel.setBackground(Color.lightGray);
+            flow2Panel.setBackground(Color.lightGray);
+            flow3Panel.setBackground(Color.lightGray);
+            flow4Panel.setBackground(Color.lightGray);
+            flow5Panel.setBackground(Color.lightGray);
+            flow6Panel.setBackground(Color.lightGray);
+            
+        });
         
         
         }
